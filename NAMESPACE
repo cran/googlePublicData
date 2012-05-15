@@ -1,0 +1,11 @@
+import(XML)
+import(XLConnect)
+importFrom("utils",zip)
+export(.addConcepts, .addInfo, .addSlices, .addTables, .addTopics)
+export(.checkDuplConcepts, .checkPath, .checkSlices, checkTimeFormat, .joda.times)
+export(.fixType, .cleantext, .getFilesNames)
+export(genMoreInfo, .getMoreInfo)
+export(dspl)
+
+S3method(print, dspl)
+S3method(summary, dspl)
