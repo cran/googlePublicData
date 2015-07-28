@@ -1,4 +1,4 @@
-print.dspl <- function(x, path=NULL, replace=F, ...) {
+print.dspl <- function(x, path=NULL, replace=FALSE, quiet=FALSE, ...) {
 ################################################################################
 # Printing method
 ################################################################################  
@@ -22,6 +22,8 @@ print.dspl <- function(x, path=NULL, replace=F, ...) {
     con <- file(description=path, open="w", encoding="UTF-8")
     cat(x$dspl, file=con)
     close.connection(con)
+    
+    if (!quiet) message("XML successfully stored at\n", normalizePath(path))
   } 
   else {
     cat(x$dspl, ...)
