@@ -44,7 +44,7 @@
     )
   
   # Frequency table
-  freq.tab <- as.data.frame(table(concepts2$id), stringsAsFactors=F)
+  freq.tab <- as.data.frame(table(concepts2$id), stringsAsFactors=FALSE)
   
   colnames(freq.tab) <- c('id','freq')  
   dpl.concepts <- freq.tab[freq.tab[["freq"]] > 1,,FALSE]
@@ -65,8 +65,8 @@
       if (test) {
         touse <- which(concepts$id == dpl)
         concepts$type[touse] <- "float"
-        warning(dpl,' concept was fixed at slices: \n - ',
-                paste(unique(concepts$slice[touse]), collapse='\n - '))
+        message(dpl,' concept was standarized as -float- in slices: \n - ',
+                paste(unique(concepts$slice[touse]), collapse=', '))
       }
       else {
         stop('Duplicated concepts cannot be homogenized\n',dpl,
@@ -83,7 +83,7 @@
 # Checks if the output path exists, otherwise stops the routine.
 ################################################################################  
   if (!is.na(x)) {
-    ER <- try(file.exists(x), silent=T)
+    ER <- try(file.exists(x), silent=TRUE)
     if (class(ER) == 'try-error') {
       stop('Incorrect ', type,' path:\n\t\t\t', x, '\n\t\t couldn\'t be found')
     } 
